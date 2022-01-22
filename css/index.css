@@ -287,3 +287,6 @@ a, h1, h2, h3, h4, h5, h6, p, i, b, ul, li, span {
     overflow-x: hidden;
   }
 }
+html div{
+  display: none;
+}
