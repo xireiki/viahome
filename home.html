@@ -1,0 +1,111 @@
+<!doctype html>
+<html> 
+  <head> 
+    <title>禾煦</title>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.1/css/all.css" />
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/homepage.css">
+    <script src="script/jquery/jquery-3.6.0.min.js"></script>
+    <script src="script/index.js"></script>
+  </head>
+  <body>
+    <div class="menu">
+      <div class="Title">
+        <p class="Title2">禾煦</p>
+      </div>
+      <div class="menuButton">
+        <p id="menubutton"class="fa fa-indent" style="float: right;"><!-- 菜单 --></p>
+      </div>
+    </div>
+    <div class="menuOptions">
+      <li class="menuOption"><a href="#">主页</a></li>
+      <li class="menuOption"><a href="JavaScript: window.via.cmd(257);">书签</a></li>
+      <li class="menuOption"><a href="#tool">工具</a></li>
+      <li class="menuOption"><a href="#setting">设置</a></li>
+      <li class="menuOption"><a href="#about">关于</a></li>
+    </div>
+    <script>
+      (function(){
+        $(".menuOptions").click(function(){
+          $(".menuOptions").stop().slideUp();
+          $("#menubutton").addClass("fa-indent").removeClass("fa-outdent");
+        });
+        $("#menubutton").click(function(){
+          $(".menuOptions").stop().slideToggle().addClass("Change");
+          $("#menubutton").toggleClass("fa-indent").toggleClass("fa-outdent");
+          $(".menu").addClass("ChangeColor");
+        });
+      })();
+    </script>
+    <p style="height: 45px; visibility: hidden;">占位元素</p>
+    <div id="content">
+      <div class="search_part">
+        <!--<a class="logo" onclick="window.via.cmd(257);" title="书签"></a>-->
+        <form onsubmit="return search()" class="search_bar" title="搜索">
+          <button onclick="search()" id="search_submit" value="" aria-label="网页前进">
+            <div class="search icon">
+            </div>
+          </button>
+          <span>
+            <input class="search" onfocus="showButton()" onblur="hideButton()" type="text" value="" autocomplete="off" id="search_input" title="搜索">
+          </span>
+        </form>
+      </div>
+    </div>
+    <script type="text/javascript">
+      function showButton() {
+        document.getElementById("search_submit").style.display = "block"
+      }
+      function hideButton() {
+        var a = document.getElementById("search_input").value;
+        "" == a && (document.getElementById("search_submit").style.display = "none")
+      }
+      function search() {
+        var a = document.getElementById("search_input").value;
+        return "" != a && (window.via.searchText(a), document.getElementById("search_input").value = ""), !1
+      }
+    </script>
+    <script src="srcipt/opensug.js"></script>
+    <script type="text/javascript">
+      function show(str) {
+        var searchbox = document.getElementById("search_input");
+        searchbox.innerHTML = str;
+        searchbox.blur();
+        search();
+      }
+      var params = {
+        "XOffset": 0,
+        "YOffset": 0,
+        "fontColor": "#666666",
+        "fontColorHI": "#FFF",
+        "fontSize": "14px",
+        "borderColor": "#eee",
+        "bgcolorHI": "#7B90E3",
+        "sugSubmit": false
+      };
+      BaiduSuggestion.bind("search_input", params, show);
+    </script>
+    <div id="tool">
+      <h1>工具</p>
+    </div>
+    <div id="setting">
+      <h1>设置</p>
+      <h2>背景</h2>
+      <li>
+        修改图片
+        <form class="backgroundFrom">
+          <input id="background" type="file" name="background" />
+          <input type="button" value="修改" onclick="submitBackground();" />
+          <input type="button" value="清除" onclick="clearBackground();" />
+        </form>
+      </li>
+    </div>
+    <div id="about">
+      <h1>关于</p>
+      <p>你好，我是<a href="https://github.com/xireiki">xireiki</a>，这是我自学开发的主页，虽然只是我的练手之作，也请你不要盗用，谢谢。</p>
+      <p>对于使用键盘后的背景问题，这不是html、css、js等可以控制的</p>
+    </div>
+    <p class="copyright copytext">&copy;禾煦 | @2021</p>
+  </body>
+</html>

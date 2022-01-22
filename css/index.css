@@ -1,0 +1,289 @@
+@font-face {
+  font-family: genshin;
+  src: url('../font/genshin.ttf');
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+a {
+  text-decoration: none;
+  color: #66ccff;
+}
+a:hover {
+  color: #39c5bb;
+}
+a:visited {
+  color: #39c5bb;
+}
+li {
+  color: white;
+  position: relative;
+  left: 10px;
+}
+a, h1, h2, h3, h4, h5, h6, p, i, b, ul, li, span {
+    font-family: genshin;
+    line-height: 160%;
+}
+.ChangeColor {
+  -webkit-animation: ChangeColorAnimation .5s 1;
+  animation: ChangeColorAnimation .5s 1;
+  animation-fill-mode: forwards;
+}
+.Change {
+  -webkit-animation: ChangeColorAnimation2 .5s 1;
+  animation: ChangeColorAnimation2 .5s 1;
+  animation-fill-mode: forwards;
+}
+@keyframes ChangeColorAnimation {
+  from {
+    background-color: rgba(0, 0, 0, 0.0);
+  }
+  to {
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+}
+@-webkit-keyframes ChangeColorAnimation {
+  from {
+    background-color: rgba(0, 0, 0, 0.0);
+  }
+  to {
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+}
+@keyframes ChangeColorAnimation2 {
+  from {
+    background-color: rgba(0, 0, 0, 0.0);
+    border-top: 1px solid rgba(0, 0, 0, 0.0);
+  }
+  to {
+    background-color: rgba(0, 0, 0, 0.6);
+    border-top: 1px solid rgba(0, 0, 0, 0.8);
+  }
+}
+@-webkit-keyframes ChangeColorAnimation2 {
+  from {
+    background-color: rgba(0, 0, 0, 0.0);
+    border-top: 1px solid rgba(0, 0, 0, 0.0);
+  }
+  to {
+    background-color: rgba(0, 0, 0, 0.6);
+    border-top: 1px solid rgba(0, 0, 0, 0.8);
+  }
+}
+@media screen and (max-width: 600px){
+  html {
+    background-image: url("../img/phone.jpg");
+    background-size: cover;
+    -webkit-background-size: cover 100%;
+    -o-background-size: cover 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: cover;
+    overflow: -Scroll;
+    overflow-y: hidden;
+    overflow-x: hidden;
+  }
+  .copyright {
+    color: white;
+    font-size: 16px;
+    text-align: center;
+    bottom: 5px;
+    left: 0;
+    right: 0;
+    position: fixed;
+    height: 20px;
+    width: 120px;
+    font-family: genshin;
+    margin: 0 auto;
+  }
+  .copytext {
+    background: rgba( 102, 204, 255, 0.10 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.18 );
+    backdrop-filter: blur( 4.0px );
+    -webkit-backdrop-filter: blur( 4.0px );
+    border-radius: 10px;
+    border: 1px solid rgba( 102, 204, 255, 0.18 );
+    line-height: 160%;
+  }
+  .menu {
+    position: fixed;
+    top: 0;
+    height: 40px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.0);
+  }
+  .Title {
+    width: 75%;
+    float: left;
+    height: 40px;
+  }
+  .Title p{
+    color: white;
+    font-family: genshin;
+    font-size: 25px;
+    line-height: 160%;
+  }
+  .menuButton {
+    height: 40px;
+    font-size: 25px;
+    width: 25%;
+    float: right;
+    right: 5px;
+    color: white;
+    line-height: 160%;
+    position: relative;
+  }
+  .menuOptions {
+    top: 40px;
+    position: relative;
+    display: none;
+  }
+  .menuOption {
+    position: relative;
+    left: 0;
+    right: 0;
+    height: 30px;
+    font-size: 20px;
+    width: 100%;
+    line-height: 160%;
+    background-color: rgba(0, 0, 0, 0.0);
+    border-top: 1px solid rgba(0, 0, 0, 0.0);
+  }
+  #menubutton{
+    line-height: 160%;
+  }
+  @keyframes fadeIn {
+    0% {
+      opacity: 0.0;
+    }
+    10% {
+      opacity: 0.05;
+    }
+    20% {
+      opacity: 0.1;
+    }
+    30% {
+      opacity: 0.4;
+    }
+    50% {
+      opacity: 0.6;
+    }
+    60% {
+      opacity: 0.7;
+    }
+    70% {
+      opacity: 0.80;
+    }
+    80% {
+      opacity: 0.85;
+    }
+    90% {
+      opacity: 0.91;
+    }
+    95% {
+      opacity: 0.96;
+    }
+    100% {
+      opacity: 1.0;
+    }
+  }
+  #tool {
+    display: none;
+  }
+  #tool:target {
+    display: inherit;
+    width: 90%;
+    height: auto;
+    position: relative;
+    left: 5%;
+    right: 5%;
+    border-radius: 10px;
+    background-color: #ffffff;
+    -webkit-animation: fadeIn .5s 1;
+    animation: fadeIn .5s 1;
+    animation-fill-mode: forwards;
+  }
+  #tool h1 {
+    color: #000000;
+    font-family: genshin;
+    text-align: center;
+  }
+  #setting {
+    display: none;
+  }
+  #setting:target {
+    display: inherit;
+    top: 10px;
+    width: 90%;
+    min-height: 85vh;
+    position: relative;
+    font-size: 16px;
+    left: 5%;
+    right: 5%;
+    border-radius: 10px;
+    background-color: #ffffff;
+    -webkit-animation: fadeIn .5s 1;
+    animation: fadeIn .5s 1;
+    animation-fill-mode: forwards;
+  }
+  #setting h1 {
+    font-family: genshin;
+    text-align: center;
+  }
+  #setting li {
+    color: #000000;
+    font-family: genshin;
+    text-align: left;
+  }
+  #setting ul {
+    color: #000000;
+    font-family: genshin;
+    text-align: left;
+  }
+  .backgroundFrom {
+    width: 100%;
+  }
+  #about {
+    display: none;
+  }
+  #about:target {
+    display: inherit;
+    top: 10px;
+    width: 90%;
+    height: auto;
+    position: relative;
+    left: 5%;
+    right: 5%;
+    border-radius: 10px;
+    background-color: #ffffff;
+    -webkit-animation: fadeIn .5s 1;
+    animation: fadeIn .5s 1;
+    animation-fill-mode: forwards;
+  }
+  #about h1 {
+    color: #000000;
+    font-family: genshin;
+    text-align: center;
+  }
+  #about p {
+    color: #000000;
+    font-family: genshin;
+    text-align: left;
+    font-size: 16px;
+  }
+}
+@media screen and (min-width: 600px){
+  html{
+    background: url("../img/bg.png") no-repeat;
+    background-size: auto;
+    -webkit-background-size: auto;
+    -o-background-size: auto;
+    background-position: center;
+    overflow: -Scroll;
+    overflow-y: hidden;
+    overflow-x: hidden;
+  }
+}
