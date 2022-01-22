@@ -196,7 +196,7 @@ a, h1, h2, h3, h4, h5, h6, p, i, b, ul, li, span {
   #tool:target {
     display: inherit;
     width: 90%;
-    height: auto;
+    min-height: 85vh;
     position: relative;
     left: 5%;
     right: 5%;
@@ -253,7 +253,7 @@ a, h1, h2, h3, h4, h5, h6, p, i, b, ul, li, span {
     display: inherit;
     top: 10px;
     width: 90%;
-    height: auto;
+    min-height: 85vh;
     position: relative;
     left: 5%;
     right: 5%;
