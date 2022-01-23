@@ -24,8 +24,10 @@ function submitBackground(){
     reader.onload = function(){
       $("html").css("background-image", "url(" + this.result + ")");
       imagelen = this.result.length;
-      if(imagelen < 1024 * 1024 * 2){
+      if(imagelen < 1024 * 1024 * 3){
         localStorage.setItem("backgroundImage", this.result);
+      } else {
+        alert("文件大小 > " + 1024 * 1024 * 3 + "，将不保存，刷新失效");
       }
     }
   } else {
