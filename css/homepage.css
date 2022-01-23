@@ -249,17 +249,17 @@ span {
 }
 
 
-@media (min-width: 100px) {
+/*@media (min-width: 100px) {
   html {
-  background-image: url("../img/phone.jpg");
-  background-size: cover;
-  -webkit-background-size: cover 100%;
-  -o-background-size: cover 100%;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: cover;
-}
+    background-image: url("../img/phone.jpg");
+    background-size: cover;
+    -webkit-background-size: cover 100%;
+    -o-background-size: cover 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: cover;
+  }
 }
 @media (min-width: 600px) {
   html {
@@ -268,7 +268,7 @@ span {
     -o-background-size: auto;
     background-position: center;
   }
-}
+}*/
 #search_input {
   width: 90%;
   height: 40px;
