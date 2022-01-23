@@ -24,10 +24,10 @@ function submitBackground(){
     reader.onload = function(){
       $("html").css("background-image", "url(" + this.result + ")");
       imagelen = this.result.length;
-      if(imagelen < 1024 * 1024 * 3){
+      if(imagelen < 1024 * 1024 * 2){
         localStorage.setItem("backgroundImage", this.result);
       } else {
-        alert("文件大小 > " + 1024 * 1024 * 3 + "，将不保存，刷新失效");
+        alert("文件大小 > " + 1024 * 1024 * 2 + "，将不保存，刷新失效");
       }
     }
   } else {
@@ -71,6 +71,13 @@ function setting(){
     Info = JSON.stringify(info);
     localStorage.setItem("settingInfo", Info);
   });
+}
+function 禾煦(){
+  if(item("backgroundImage")){
+    downDataUrl(item("backgroundImage"), "bg.jpg");
+  } else {
+    downUrl("./img/phone.jpg", "bg.jpg");
+  }
 }
 (function(){
   welcome();
