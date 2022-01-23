@@ -137,8 +137,10 @@ a, h1, h2, h3, h4, h5, h6, p, i, b, ul, li, span {
   }
   .menuOptions {
     top: 40px;
-    position: relative;
+    width: 100%;
+    position: fixed;
     display: none;
+    z-index: 10;
   }
   .menuOption {
     position: relative;
