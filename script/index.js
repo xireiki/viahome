@@ -44,7 +44,7 @@ function clearBackground(){
 }
 function setting(){
   //获取或者设置设置信息
-  var info = {"bookmark": true, "bg": true, "bgOptimize": true};
+  var info = {"bookmark": true, "bg": true, "bgOptimize": true, "live2d": true, "Lenovo": true};
   if(localStorage.getItem("settingInfo")){
     Info = localStorage.getItem("settingInfo");
     info = $.parseJSON(Info);
@@ -60,6 +60,9 @@ function setting(){
   }
   if(info["bgOptimize"]){
     $("html").css("background-position", "center 0");
+  }
+  if(info["live2d"]){
+    live2d();
   }
   //在设置中显示设置
   for (name in info){
@@ -79,6 +82,27 @@ function 禾煦(){
     downUrl("./img/phone.jpg", "bg.jpg");
   }
 }
+function outresult(a){
+  $("#console .output p").append(a + "\n");
+}
+function exec_shell(){
+  if($("#console .input .inputText").val()){
+    outresult(shell($("#console .input .inputText").val()));
+  }
+}
+function print(str){
+  return str;
+}
+function live2d(id){
+  if (id === undefined){
+    $("body").append('<div id="live2d"></div>');
+    id = "live2d";
+  }
+}
 (function(){
+  $("#tool li a").click(function(){
+    $("#content").css("display", "none");
+  });
   welcome();
 })();
+shell = eval;

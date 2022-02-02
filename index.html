@@ -1,19 +1,24 @@
 <!doctype html>
 <html> 
   <head> 
-    <title>禾煦</title>
+    <title>和煦</title>
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.1/css/all.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" />
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/homepage.css">
     <script src="script/jquery/jquery-3.6.0.min.js"></script>
+    <script src="script/JQueryCookie/jquery.cookie.js"></script>
+    <script src="script/vue.min.js"></script>
+    <script src="script/webadb.js"></script>
+    <script src="script/live2d.min.js"></script>
+    <script src="script/vconsole.min.js"></script>
     <script src="script/tool.js"></script>
     <script src="script/index.js"></script>
   </head>
   <body>
     <div class="menu">
       <div class="Title">
-        <p class="Title2"><a href="#top" style="color: #ffffff">禾煦</a></p>
+        <p class="Title2"><a href="#top" style="color: #ffffff">和煦</a></p>
       </div>
       <div class="menuButton">
         <p id="menubutton"class="fa fa-indent" style="float: right;"><!-- 菜单 --></p>
@@ -26,19 +31,6 @@
       <li class="menuOption"><a href="#setting">设置</a></li>
       <li class="menuOption"><a href="#about">关于</a></li>
     </div>
-    <script>
-      (function(){
-        $(".menuOptions").click(function(){
-          $(".menuOptions").stop().slideUp();
-          $("#menubutton").addClass("fa-indent").removeClass("fa-outdent");
-        });
-        $("#menubutton").click(function(){
-          $(".menuOptions").stop().slideToggle().addClass("Change");
-          $("#menubutton").toggleClass("fa-indent").toggleClass("fa-outdent");
-          $(".menu").addClass("ChangeColor");
-        });
-      })();
-    </script>
     <p style="height: 45px; visibility: hidden;">占位元素</p>
     <div id="content">
       <div class="search_part">
@@ -54,41 +46,10 @@
         </form>
       </div>
     </div>
-    <script type="text/javascript">
-      function showButton() {
-        document.getElementById("search_submit").style.display = "block"
-      }
-      function hideButton() {
-        var a = document.getElementById("search_input").value;
-        "" == a && (document.getElementById("search_submit").style.display = "none")
-      }
-      function search() {
-        var a = document.getElementById("search_input").value;
-        return "" != a && (window.via.searchText(a), document.getElementById("search_input").value = ""), !1
-      }
-    </script>
-    <script src="srcipt/opensug.js"></script>
-    <script type="text/javascript">
-      function show(str) {
-        var searchbox = document.getElementById("search_input");
-        searchbox.innerHTML = str;
-        searchbox.blur();
-        search();
-      }
-      var params = {
-        "XOffset": 0,
-        "YOffset": 0,
-        "fontColor": "#666666",
-        "fontColorHI": "#FFF",
-        "fontSize": "14px",
-        "borderColor": "#eee",
-        "bgcolorHI": "#7B90E3",
-        "sugSubmit": false
-      };
-      BaiduSuggestion.bind("search_input", params, show);
-    </script>
     <div id="tool">
       <h1>工具</p>
+      <h2>控制台</h2>
+      <li><a href="#console">点击进入</a></li>
     </div>
     <div id="setting">
       <h1>设置</p>
@@ -96,6 +57,8 @@
       <li>书签（暂时没用）<input type="checkbox" name="bookmark" /></li>
       <li>背景图片<input type="checkbox" name="bg" /></li>
       <li>背景优化<input type="checkbox" name="bgOptimize" /></li>
+      <li>Live2D（暂时没用）<input type="checkbox" name="live2d" /></li>
+      <li>搜索联想<input type="checkbox" name="Lenovo" /></li>
       <h2>背景</h2>
       <li>
         修改图片
@@ -112,9 +75,68 @@
       <p>对于使用键盘后的背景问题，这不是html、css、js等可以控制的</p>
       <p>PS: 本主页只适用于<a href="https://www.coolapk.com/apk/mark.via">Via</a>，其他浏览器无法正常使用。</p>
     </div>
-    <script>
-      setting();
+    <div id="console">
+      <div class="output">
+        <p></p>
+      </div>
+      <div class="input">
+        <textarea class="inputText" ></textarea>
+        <button class="inputSub" onclick="exec_shell();" >执行</button>
+      </div>
+    </div>
+    <script src="script/opensug.js"></script>
+    <script id="id">
+      (function(){
+        $(".menuOptions").click(function(){
+          $(".menuOptions").stop().slideUp();
+          $("#menubutton").addClass("fa-indent").removeClass("fa-outdent");
+        });
+        $("#menubutton").click(function(){
+          $(".menuOptions").stop().slideToggle().addClass("Change");
+          $("#menubutton").toggleClass("fa-indent").toggleClass("fa-outdent");
+          $(".menu").addClass("ChangeColor");
+        });
+        setting();
+        if (location.hash == "#console"){
+          $("#content").css("display", "none");
+        }
+      })();
     </script>
-    <p class="copyright copytext"><a href="https://xireiki.github.io/viahome" style="color: #ffffff">&copy;禾煦</a> | @2021</p>
+    <script type="text/javascript">
+      function showButton() {
+        document.getElementById("search_submit").style.display = "block"
+      }
+      function hideButton() {
+        var a = document.getElementById("search_input").value;
+        "" == a && (document.getElementById("search_submit").style.display = "none")
+      }
+      function search() {
+        var a = document.getElementById("search_input").value;
+        return "" != a && (window.via.searchText(a), document.getElementById("search_input").value = ""), !1
+      }
+      function show(str) {
+        var searchbox = document.getElementById("search_input");
+        searchbox.innerHTML = str;
+        searchbox.blur();
+        search();
+      }
+      var params = {
+        "XOffset": 0,
+        "YOffset": 0,
+        "fontColor": "#666666",
+        "fontColorHI": "#FFF",
+        "fontSize": "14px",
+        "borderColor": "#eee",
+        "bgcolorHI": "#7B90E3",
+        "sugSubmit": false
+      };
+      if(JSON.parse(item("settingInfo"))["Lenovo"]){
+        BaiduSuggestion.bind("search_input", params, show);
+      }
+    </script>
+    <p class="copyright copytext">
+      <a href="https://xireiki.github.io/viahome" style="color: #ffffff">&copy;禾煦</a>
+       | @2021
+    </p>
   </body>
 </html>

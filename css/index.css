@@ -275,6 +275,59 @@ a, h1, h2, h3, h4, h5, h6, p, i, b, ul, li, span {
     text-align: left;
     font-size: 16px;
   }
+  #console {
+    display: none;
+  }
+  #console:target {
+    display: inherit;
+    top: 10px;
+    width: 90%;
+    height: 85vh;
+    position: relative;
+    left: 5%;
+    right: 5%;
+    border-radius: 10px;
+    background-color: #ffffff00;
+    -webkit-animation: fadeIn .5s 1;
+    animation: fadeIn .5s 1;
+    animation-fill-mode: forwards;
+  }
+  #console .output {
+    display: inherit;
+    overflow: scroll;
+    height: 85%;
+    border-radius: 10px;
+    width: 100%;
+    position: relative;
+    background-color: #66ccff80;
+    color: #ffffff00;
+  }
+  #console .input {
+    height: 20%;
+    border-radius: 10px;
+    position: relative;
+  }
+  #console .input textarea {
+    float: left;
+    height: 90px;
+    width: 85%;
+    position: relative;
+  }
+  #console .input button {
+    float: left;
+    height: 90px;
+    width: 15%;
+    position: relative;
+    border-radius: 10px;
+  }
+  #console .output p {
+    display: block;
+    text-index: 0px;
+    font-size: 16px;
+    white-space: pre-wrap;
+    height: 100%;
+    color: #ffffff;
+  }
 }
 @media screen and (min-width: 600px){
   html {

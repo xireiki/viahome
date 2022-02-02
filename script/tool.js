@@ -90,10 +90,14 @@ var Base64 = {
   }
 }
 function item(name, cont){
-  if(cont){
-    return localStorage.setItem(name, cont);
+  if (name === undefined && cont === undefined){
+    return localStorage;
   } else {
-    return localStorage.getItem(name);
+    if (cont === undefined){
+      return localStorage.getItem(name);
+    } else {
+      return localStorage.setItem(name, cont);
+    }
   }
 }
 function downDataUrl(Data, name){
