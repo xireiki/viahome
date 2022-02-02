@@ -44,7 +44,15 @@ function clearBackground(){
 }
 function setting(){
   //获取或者设置设置信息
-  var info = {"bookmark": true, "bg": true, "bgOptimize": true, "live2d": true, "Lenovo": true};
+  var info = {
+    "bookmark": true,
+    "bg": true,
+    "bgOptimize": true,
+    "live2d": true,
+    "Lenovo": true,
+    "attribute": false,
+    "title": true
+  };
   if(localStorage.getItem("settingInfo")){
     Info = localStorage.getItem("settingInfo");
     info = $.parseJSON(Info);
@@ -58,12 +66,10 @@ function setting(){
   } else if(info["bg"] && !localStorage.getItem("backgroundImage")){
     $("html").addClass("bg");
   }
-  if(info["bgOptimize"]){
-    $("html").css("background-position", "center 0");
-  }
-  if(info["live2d"]){
-    live2d();
-  }
+  if(info["bgOptimize"]) $("html").css("background-position", "center 0");
+  if(info["live2d"]) live2d();
+  if(!info["attribute"]) $("body").append('<p class="copyright copytext"><a href="https://xireiki.github.io/viahome" style="color: #ffffff">&copy;禾煦</a> | @2021</p>');
+  if(!info["title"]) $(".Title").remove();
   //在设置中显示设置
   for (name in info){
     $("input[name=\"" + name + "\"]").prop("checked", info[name]);
@@ -98,6 +104,9 @@ function live2d(id){
     $("body").append('<div id="live2d"></div>');
     id = "live2d";
   }
+}
+function clearSetting(){
+  if(confirm("确认清楚所有设置信息？")) item().clear(),location.reload();
 }
 (function(){
   $("#tool li a").click(function(){

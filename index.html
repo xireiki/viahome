@@ -59,6 +59,8 @@
       <li>背景优化<input type="checkbox" name="bgOptimize" /></li>
       <li>Live2D（暂时没用）<input type="checkbox" name="live2d" /></li>
       <li>搜索联想<input type="checkbox" name="Lenovo" /></li>
+      <li>隐藏底部信息<input type="checkbox" name="attribute" /></li>
+      <li>标题（和煦）<input type="checkbox" name="title" /></li>
       <h2>背景</h2>
       <li>
         修改图片
@@ -68,6 +70,8 @@
           <input type="button" value="清除" onclick="clearBackground();" />
         </form>
       </li>
+      <h2>其他</h2>
+      <li>清除设置信息<input type="button" value="清除" onclick="clearSetting();" /></li>
     </div>
     <div id="about">
       <h1>关于</p>
@@ -134,9 +138,5 @@
         BaiduSuggestion.bind("search_input", params, show);
       }
     </script>
-    <p class="copyright copytext">
-      <a href="https://xireiki.github.io/viahome" style="color: #ffffff">&copy;禾煦</a>
-       | @2021
-    </p>
   </body>
 </html>
