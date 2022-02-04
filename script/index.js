@@ -179,10 +179,10 @@ function removeBookmark(){
     num = num + 1;
   }
   if (confirm("您有如下书签: \n" + site + "请在稍后的输入框中输入对应序号，多个序号以英文逗号分隔，点击确定开始输入")){
-    result = prompt("请输入对应序号").split(".");
+    result = prompt("请输入对应序号").split(",");
   }
   for (i in result){
-    delete info["bookmarks"][sites[parseInt(i)]];
+    delete info["bookmarks"][sites[result[parseInt(i)]]];
   }
   item("settingInfo", JSON.stringify(info));
   location.reload();
