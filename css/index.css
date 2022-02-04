@@ -36,6 +36,20 @@ a, h1, h2, h3, h4, h5, h6, p, i, b, ul, li, span {
   animation: ChangeColorAnimation2 .5s 1;
   animation-fill-mode: forwards;
 }
+button{
+  color: #ffffff;
+  background-color: #66ccff;
+  border-radius: 3px;
+  border-width: 0;
+  outline: none;
+  font-family: genshin;
+  font-size: 17px;
+  text-align: center;
+  cursor: pointer;
+}
+button: hover{
+  background-color: #66ccff80;
+}
 @keyframes ChangeColorAnimation {
   from {
     background-color: rgba(0, 0, 0, 0.0);
@@ -327,20 +341,6 @@ a, h1, h2, h3, h4, h5, h6, p, i, b, ul, li, span {
     white-space: pre-wrap;
     height: 100%;
     color: #ffffff;
-  }
-  button{
-    color: #ffffff;
-    background-color: #66ccff;
-    border-radius: 3px;
-    border-width: 0;
-    outline: none;
-    font-family: genshin;
-    font-size: 17px;
-    text-align: center;
-    cursor: pointer;
-  }
-  button: hover{
-    background-color: #66ccff80;
   }
   #input {
     height: 100vh;
