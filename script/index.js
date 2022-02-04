@@ -50,6 +50,7 @@ function setting(){
     "addBookmark": true,
     "deleteBookmark": false,
     "bg": true,
+    "viaBg": true,
     "bgOptimize": true,
     "live2d": true,
     "Lenovo": true,
@@ -64,9 +65,11 @@ function setting(){
     localStorage.setItem("settingInfo", Info);
   }
   //执行设置
-  if(localStorage.getItem("backgroundImage") && info["bg"]){
+  if (info["viaBg"] && info["bg"]) {
+    $("html").css("background-image", "url(file:///storage/emulated/0/Android/data/mark.via/files/content/bg.jpg)");
+  } else if(item("backgroundImage") && info["bg"]){
     $("html").css("background-image", "url(" + localStorage.getItem("backgroundImage") + ")");
-  } else if(info["bg"] && !localStorage.getItem("backgroundImage")){
+  } else if(info["bg"] && !item("backgroundImage")){
     $("html").addClass("bg");
   }
   if(info["bgOptimize"]) $("html").css("background-position", "center 0");
