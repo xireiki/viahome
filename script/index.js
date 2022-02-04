@@ -46,6 +46,9 @@ function setting(){
   //获取或者设置设置信息
   var info = {
     "bookmark": true,
+    "bookmarks": { },
+    "addBookmark": true,
+    "deleteBookmark": false,
     "bg": true,
     "bgOptimize": true,
     "live2d": true,
@@ -70,6 +73,14 @@ function setting(){
   if(info["live2d"]) live2d();
   if(!info["attribute"]) $("body").append('<p class="copyright copytext"><a href="https://xireiki.github.io/viahome" style="color: #ffffff">&copy;禾煦</a> | @2021</p>');
   if(!info["title"]) $(".Title").remove();
+  if(info["bookmark"]){
+    $("#content").append('<div id="bookmark_part"><div id="box_container"></div></div>');
+    for (bm in info["bookmarks"]){
+      $("#box_container").append('<div class="box"><p class="title" style="background:' + info["bookmarks"][bm]["color"] + '">' + info["bookmarks"][bm]["title"] + '</p><div class="overlay" style="background: url(' + info["bookmarks"][bm]["url"] + ') no-repeat;background-size: cover;background-position:center center;"></div><p class="url">' + bm + '</p><a href="' + info["bookmarks"][bm]["url"] + '" title="' + bm + '"></a></div>');
+    }
+    if (info["addBookmark"]) $("#box_container").append('<div class="box" onclick="inputBookmark()"><p class="title" style="background:#66ccff80;">添加</p><div class="overlay" style="background: url() no-repeat;background-size: cover;background-position:center center;"></div><p class="url">添加书签</p></div>');
+    if (info["deleteBookmark"]) $("#box_container").append('<div class="box" onclick="removeBookmark()"><p class="title" style="background:#66ccff80;">删除</p><div class="overlay" style="background: url() no-repeat;background-size: cover;background-position:center center;"></div><p class="url">删除书签</p></div>');
+  }
   //在设置中显示设置
   for (name in info){
     $("input[name=\"" + name + "\"]").prop("checked", info[name]);
@@ -107,6 +118,74 @@ function live2d(id){
 }
 function clearSetting(){
   if(confirm("确认清楚所有设置信息？")) item().clear(),location.reload();
+}
+function inputBookmark(){
+  $("body").append(`
+    <div id="input">
+      <div>
+        <div>
+          <p style="height: 45px; text-align: center;">添加书签</p>
+          <input type="text" name="TITLE" placeholder="标题（浏览器限制，自行输入）" required="required" /><br />
+          <input type="text" name="url" placeholder="书签地址" required="required" /><br />
+          <input type="text" name="icon" placeholder="网站图标（浏览器限制，自行输入）" required="required" /><br />
+          <input type="text" name="color" placeholder="背景颜色（默认：#66ccff80）" required="required" /><br />
+          <input type="text" name="fontcolor" placeholder="字体颜色（默认：#ffffff）" required="required" /><br />
+          <div>
+            <button id="ibm" style="margin: 5px 9px 5px; width: 60px; height: 30px;">确定</button>
+            <button id="close" style="margin: 5px 9px 5px; width: 60px; height: 30px;">关闭</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  `);
+  $("#ibm").click(function(){
+    title = ($('input[name="TITLE"]').val() === "") ? undefined : $('input[name="TITLE"]').val();
+    url = ($('input[name="url"]').val() === "") ? undefined : $('input[name="url"]').val();
+    icon = ($('input[name="icon"]').val() === "") ? undefined : $('input[name="icon"]').val();
+    color = ($('input[name="color"]').val() === "") ? undefined : $('input[name="color"]').val();
+    fontcolor = ($('input[name="fontcolor"]').val() === "") ? undefined : $('input[name="fontcolor"]').val();
+    addBookmark({title: title, url: url, icon: icon, color: color, fontcolor: fontcolor});
+  });
+  $("#close").click(function(){
+    $("#input").remove();
+  });
+}
+function addBookmark({title, url, icon, color, fontcolor}, func){
+  info = JSON.parse(item("settingInfo"));
+  icon = (icon === undefined) ? "" : icon;
+  color = (color === undefined) ? "#66ccff80" : color;
+  fontcolor = (fontcolor === undefined) ? "#ffffff" : fontcolor;
+  info["bookmarks"][title] = {
+    "title": title.substr(0, 2),
+    "icon": icon,
+    "url": url,
+    "color": color,
+    "font-size": fontcolor
+  }
+  if(typeof func == "function"){
+    func(info);
+  }
+  item("settingInfo", JSON.stringify(info));
+  location.reload();
+}
+function removeBookmark(){
+  info = JSON.parse(item("settingInfo"));
+  site = "";
+  sites = [];
+  num = 0;
+  for (bm in info["bookmarks"]){
+    site = site + "    " + num.toString() + ". " + bm + "\n";
+    sites[num] = bm;
+    num = num + 1;
+  }
+  if (confirm("您有如下书签: \n" + site + "请在稍后的输入框中输入对应序号，多个序号以英文逗号分隔，点击确定开始输入")){
+    result = prompt("请输入对应序号").split(".");
+  }
+  for (i in result){
+    delete info["bookmarks"][sites[parseInt(i)]];
+  }
+  item("settingInfo", JSON.stringify(info));
+  location.reload();
 }
 (function(){
   $("#tool li a").click(function(){

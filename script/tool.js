@@ -112,11 +112,7 @@ function downDataUrl(Data, name){
 function downUrl(url, name){
   link = document.createElement("a");
   link.href = url;
-  if(name){
-    link.download = name;
-  } else {
-    link.download = "";
-  }
+  link.download = name;
   link.style = "display: none;";
   document.body.appendChild(link);
   link.click();

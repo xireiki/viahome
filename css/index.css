@@ -328,6 +328,55 @@ a, h1, h2, h3, h4, h5, h6, p, i, b, ul, li, span {
     height: 100%;
     color: #ffffff;
   }
+  button{
+    color: #ffffff;
+    background-color: #66ccff;
+    border-radius: 3px;
+    border-width: 0;
+    outline: none;
+    font-family: genshin;
+    font-size: 17px;
+    text-align: center;
+    cursor: pointer;
+  }
+  button: hover{
+    background-color: #66ccff80;
+  }
+  #input {
+    height: 100vh;
+    width: 100vw;
+    background-color: #00000080;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0:
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #input > div {
+    min-height: 80px;
+    height: auto;
+    width: 350px;
+    background-color: #ffffff;
+    position: relative;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #input > div > div > input {
+    height: 40px;
+    width: 300px;
+    margin: 5px 0 5px;
+    border-radius: 10px;
+  }
+  #input > div > div > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 @media screen and (min-width: 600px){
   html {

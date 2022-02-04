@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta name="color-scheme" content="light dark">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui">
+    <title>主页</title>
+    <link rel="stylesheet" href="/data/user/0/mark.via/files/homepage.css">
+    <style></style>
+  </head>
+  <body>
+    <div class="frosted-glass"></div>
+    <div id="content">
+      <div class="search_part">
+        <form onsubmit="return search()" class="search_bar" title="搜索">
+          <button onclick="search()" id="search_submit" value="" aria-label="网页前进">
+            <div class="search icon"></div>
+          </button>
+          <span>
+            <input class="search" onfocus="showButton()" onblur="hideButton()" type="text" value="" autocomplete="off" id="search_input" title="搜索" />
+          </span>
+        </form>
+      </div>
+      <div id="bookmark_part">
+        <div id="box_container">
+          <div class="box">
+            <p class="title" style="background:#617277;">主</p>
+            <div class="overlay" style="background: url('') no-repeat;background-size: cover;background-position:center center;"></div>
+            <p class="url">主页</p><a href="file:///storage/emulated/0/Android/data/mark.via/files/home/index.html" title="主页"></a>
+          </div>
+          <div class="box">
+            <p class="title" style="background:#a0a35a;">书</p>
+            <div class="overlay" style="background: url('./icon/javascript.png') no-repeat;background-size: cover;background-position:center center;"></div>
+            <p class="url">书签</p><a href="javascript:via.cmd(257)" title="书签"></a>
+          </div>
+          <div class="box">
+            <p class="title" style="background:#72619f;">曦</p>
+            <div class="overlay" style="background: url('./icon/www.xireiki.com.png') no-repeat;background-size: cover;background-position:center center;"></div>
+            <p class="url">曦灵</p><a href="https://www.xireiki.com/" title="曦灵"></a>
+          </div>
+          <div class="box">
+            <p class="title" style="background:#d5cc7f;">音</p>
+            <div class="overlay" style="background: url('./icon/unlock.xn--zzv42wd7v.top.png') no-repeat;background-size: cover;background-position:center center;"></div>
+            <p class="url">音乐解锁</p><a href="https://unlock.xn--zzv42wd7v.top/" title="音乐解锁"></a>
+          </div>
+          <div class="box">
+            <p class="title" style="background:#8b9cc1;">音</p>
+            <div class="overlay" style="background: url('./icon/localhost.png') no-repeat;background-size: cover;background-position:center center;"></div>
+            <p class="url">音乐搜索器</p><a href="http://localhost:1026/" title="音乐搜索器"></a>
+          </div>
+          <div class="box">
+            <p class="title" style="background:#cc898d;">不</p>
+            <div class="overlay" style="background: url('./icon/orxing.top.png') no-repeat;background-size: cover;background-position:center center;"></div>
+            <p class="url">不思议导航-搜索比导航更好用</p><a href="https://orxing.top/nav" title="不思议导航-搜索比导航更好用"></a>
+          </div>
+          <div class="box">
+            <p class="title" style="background:#709288;">专</p>
+            <div class="overlay" style="background: url('./icon/www.aplaybox.com.png') no-repeat;background-size: cover;background-position:center center;"></div>
+            <p class="url">专业模型创作分享社区_模之屋_PlayBox</p><a href="https://www.aplaybox.com/" title="专业模型创作分享社区_模之屋_PlayBox"></a>
+          </div>
+          <div class="box">
+            <p class="title" style="background:#c9ca86;">菜</p>
+            <div class="overlay" style="background: url('./icon/www.runoob.com.png') no-repeat;background-size: cover;background-position:center center;"></div>
+            <p class="url">菜鸟教程 - 学的不仅是技术，更是梦想！</p><a href="https://www.runoob.com/" title="菜鸟教程 - 学的不仅是技术，更是梦想！"></a>
+          </div>
+          <div class="box">
+            <p class="title" style="background:#8aafb0;">青</p>
+            <div class="overlay" style="background: url('./icon/limestart.cn.png') no-repeat;background-size: cover;background-position:center center;"></div>
+            <p class="url">青柠起始页</p><a href="https://limestart.cn/" title="青柠起始页"></a>
+          </div>
+          <div class="box">
+            <p class="title" style="background:#96d8d7;">轻</p>
+            <div class="overlay" style="background: url('./icon/tool.whgpc.com.png') no-repeat;background-size: cover;background-position:center center;"></div>
+            <p class="url">轻插件</p><a href="https://tool.whgpc.com/Tools/viaPLUG/#/tabBar/home" title="轻插件"></a>
+          </div>
+          <div class="box">
+            <p class="title" style="background:#6c68b6;">米</p>
+            <div class="overlay" style="background: url('./icon/user.mihoyo.com.png') no-repeat;background-size: cover;background-position:center center;"></div>
+            <p class="url">米哈游通行证</p><a href="https://user.mihoyo.com/#/login/password" title="米哈游通行证"></a>
+          </div>
+        </div>
+      </div>
+      <script type="text/javascript">function showButton(){document.getElementById("search_submit").style.display="block"}function hideButton(){var a=document.getElementById("search_input").value;""==a&&(document.getElementById("search_submit").style.display="none")}function search(){var a=document.getElementById("search_input").value;return""!=a&&(window.via.searchText(a),document.getElementById("search_input").value=""),!1}</script>
+      <script charset="gbk" src="file:///android_asset/opensug.js"></script>
+      <script type="text/javascript">function show(str){var searchbox = document.getElementById("search_input"); searchbox.innerHTML = str; searchbox.blur(); search();} var params = {"XOffset":0, "YOffset":0, "fontColor":"#666666", "fontColorHI":"#FFF", "fontSize":"14px", "borderColor":"#eee", "bgcolorHI":"#7B90E3", "sugSubmit":false }; BaiduSuggestion.bind("search_input",params,show); </script>
+    </div>
+  </body>
+</html>
