@@ -45,6 +45,7 @@ function clearBackground(){
 function setting(){
   //获取或者设置设置信息
   var info = {
+    "StrikingTitle": false,
     "bookmark": true,
     "bookmarks": { },
     "addBookmark": true,
@@ -58,11 +59,11 @@ function setting(){
     "title": true
   };
   if(localStorage.getItem("settingInfo")){
-    Info = localStorage.getItem("settingInfo");
-    info = $.parseJSON(Info);
+    Info = item("settingInfo");
+    info = JSON.parse(Info);
   } else {
     Info = JSON.stringify(info);
-    localStorage.setItem("settingInfo", Info);
+    item("settingInfo", Info);
   }
   //执行设置
   if (info["viaBg"] && info["bg"]) {
@@ -84,6 +85,8 @@ function setting(){
     if (info["addBookmark"]) $("#box_container").append('<div class="box" onclick="inputBookmark()"><p class="title" style="background:#66ccff80;">添加</p><div class="overlay" style="background: url() no-repeat;background-size: cover;background-position:center center;"></div><p class="url">添加书签</p></div>');
     if (info["deleteBookmark"]) $("#box_container").append('<div class="box" onclick="removeBookmark()"><p class="title" style="background:#66ccff80;">删除</p><div class="overlay" style="background: url() no-repeat;background-size: cover;background-position:center center;"></div><p class="url">删除书签</p></div>');
   }
+  if (info["func"]) eval(info["func"]);
+  if (info["StrikingTitle"]) $(".menu").addClass("ChangeColor");
   //在设置中显示设置
   for (name in info){
     $("input[name=\"" + name + "\"]").prop("checked", info[name]);
@@ -92,11 +95,13 @@ function setting(){
   $("input[type=\"checkbox\"]").click(function(){
     info[this.name] = $(this).prop("checked");
     Info = JSON.stringify(info);
-    localStorage.setItem("settingInfo", Info);
+    item("settingInfo", Info);
   });
 }
 function 禾煦(){
-  if(item("backgroundImage")){
+  if(JSON.parse(item("settingInfo"))["viaBg"]){
+    downUrl("file:///storage/emulated/0/Android/data/mark.via/files/content/bg.jpg", "bg.jpg");
+  } else if(item("backgroundImage")){
     downDataUrl(item("backgroundImage"), "bg.jpg");
   } else {
     downUrl("./img/phone.jpg", "bg.jpg");
