@@ -83,7 +83,7 @@ function setting(){
   }
   if(info["bgOptimize"]) $("html").css("background-position", "center 0");
   if(info["live2d"]) live2d();
-  if(!info["attribute"]) $("body").append('<p class="copyright copytext"><a href="https://xireiki.github.io/viahome" style="color: #ffffff">&copy;禾煦</a> | @2021</p>');
+  if(!info["attribute"]) $("body").append('<p class="copyright copytext"><a href="https://xireiki.github.io/viahome" style="color: #ffffff">&copy;和煦</a> | @2021</p>');
   if(!info["title"]) $(".Title").remove();
   if(info["bookmark"]){
     $("#content").append('<div id="bookmark_part"><div id="box_container"></div></div>');
