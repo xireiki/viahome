@@ -42,23 +42,31 @@ function clearBackground(){
     alert("无需清除.");
   }
 }
+function skip(url, toast, type){
+  type = (type === undefined) ? false : type;
+  toast = (toast === undefined) ? false : toast;
+  link = document.createElement("a");
+  link.href = url;
+  link.style = "display: none;";
+  document.body.appendChild(link);
+  return (url === undefined) ? false : (type === "confirm") ? (toast) ? (function(){(confirm(toast.replace(/{{}}/, url))) ? link.click() : false})() : (function(){(confirm("确认前往 " + url + "?")) ? link.click() : false})() : (type === "toast") ? (toast) ? (function(){window.via.toast(toast.replace(/{{}}/, toast)); link.click()})() : (function(){window.via.toast("正在前往 " + url + " 请留意网络安全"); link.click()})() : link.click();
+}
 function setting(){
   //获取或者设置设置信息
   var info = {
     "StrikingTitle": false,
     "bookmark": true,
     "bookmarks": { },
-    "addBookmark": true,
-    "deleteBookmark": false,
+    "setBookmark": true,
     "bg": true,
-    "viaBg": true,
+    "viaBg": false,
     "bgOptimize": true,
     "live2d": true,
     "Lenovo": true,
     "attribute": false,
     "title": true
   };
-  if(localStorage.getItem("settingInfo")){
+  if(item("settingInfo")){
     Info = item("settingInfo");
     info = JSON.parse(Info);
   } else {
@@ -80,10 +88,31 @@ function setting(){
   if(info["bookmark"]){
     $("#content").append('<div id="bookmark_part"><div id="box_container"></div></div>');
     for (bm in info["bookmarks"]){
-      $("#box_container").append('<div class="box"><p class="title" style="background:' + info["bookmarks"][bm]["color"] + '">' + info["bookmarks"][bm]["title"] + '</p><div class="overlay" style="background: url(' + info["bookmarks"][bm]["url"] + ') no-repeat;background-size: cover;background-position:center center;"></div><p class="url">' + bm + '</p><a href="' + info["bookmarks"][bm]["url"] + '" title="' + bm + '"></a></div>');
+      $("#box_container").append('<div class="box" onclick="skip(\'' + info["bookmarks"][bm]["url"] + '\')"><p class="title" style="background-color: ' + info["bookmarks"][bm]["color"] + ';">' + info["bookmarks"][bm]["title"] + '</p><div class="overlay" style="background: url(' + info["bookmarks"][bm]["icon"] + ') no-repeat; background-size: cover; background-position: center center;"></div></div>');
     }
-    if (info["addBookmark"]) $("#box_container").append('<div class="box" onclick="inputBookmark()"><p class="title" style="background:#66ccff80;">添加</p><div class="overlay" style="background: url() no-repeat;background-size: cover;background-position:center center;"></div><p class="url">添加书签</p></div>');
-    if (info["deleteBookmark"]) $("#box_container").append('<div class="box" onclick="removeBookmark()"><p class="title" style="background:#66ccff80;">删除</p><div class="overlay" style="background: url() no-repeat;background-size: cover;background-position:center center;"></div><p class="url">删除书签</p></div>');
+    if (info["setBookmark"]) {
+      $("#box_container").append(`
+        <div class="box" id="adbm">
+          <p class="title" id="titleText" style="background: #66ccff80;">设置</p>
+        </div>
+      `);
+      bd = 0;
+      $("#adbm").click(function(){
+        if(bd === 0){
+          bd = 1;
+          $("#titleText").text('添加');
+          $("#box_container").append(`
+            <div class="box" id="debm" onclick="removeBookmark();">
+              <p class="title" style="background:#66ccff80;">删除</p>
+            </div>
+          `);
+        } else if (bd === 1){
+          $("#box_container").click(inputBookmark());
+        } else {
+          alert("还请不要使用脚本修改本页！");
+        }
+      });
+    }
   }
   if (info["func"]) eval(info["func"]);
   if (info["StrikingTitle"]) $(".menu").addClass("ChangeColor");
@@ -97,6 +126,18 @@ function setting(){
     Info = JSON.stringify(info);
     item("settingInfo", Info);
   });
+}
+function ResetSetting(){
+  info = JSON.parse(item("settingInfo"));
+  if (info["addBookmark"] !== undefined){
+    info["setBookmark"] = info["addBookmark"];
+    delete info["addBookmark"];
+  }
+  if (info["removeBookmark"] !== undefined){
+    delete info["removeBookmark"];
+  }
+  item("settingInfo", JSON.stringify(info));
+  location.reload();
 }
 function 禾煦(){
   if(JSON.parse(item("settingInfo"))["viaBg"]){
@@ -200,5 +241,8 @@ function removeBookmark(){
     $("#content").css("display", "none");
   });
   welcome();
+  if(JSON.parse(item("settingInfo"))["addBookmark"] !== undefined || JSON.parse(item("settingInfo"))["removeBookmark"] !== undefined){
+    ResetSetting();
+  }
 })();
 shell = eval;

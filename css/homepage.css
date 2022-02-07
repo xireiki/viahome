@@ -196,8 +196,9 @@ span {
   left: 0;
   top: 0;
   border-radius: 4px;
-  width: 80px;
-  height: 80px;
+  width: 70px;
+  height: 32px;
+  z-index: -1;
 }
 .title {
   border-radius: 4px;
@@ -220,14 +221,14 @@ span {
   height: 3em;
   max-width: 72px;
 }
-.url {
+/*.url {
   color: #4a4266;
   height: 1.5em;
   line-height: 1.5em;
   width: 72px;
   font-size: 0.75em;
   white-space: nowrap;
-  overflow: hidden;
+  /*overflow: hidden;*
   margin: auto;
   -webkit-border-top-right-radius: 5px;
   -webkit-border-bottom-right-radius: 5px;
@@ -236,7 +237,7 @@ span {
   -ms-text-overflow: ellipsis;
   padding-top: 0px;
   padding-bottom: 8px
-}
+}*/
 #search_input {
   width: 90%;
   height: 40px;
